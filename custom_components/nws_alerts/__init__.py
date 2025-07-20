@@ -280,7 +280,7 @@ async def async_get_alerts(zone_id: str = "", gps_loc: str = "") -> dict:
                     0
                 ]
             else:
-                tmp_dict["Headline"] = event
+                tmp_dict["Headline"] = alert["properties"]["headline"]
 
             # Valid Time Event Coding (https://www.weather.gov/bmx/vtec)
             if "VTEC" in alert["properties"]["parameters"]:
