@@ -140,6 +140,10 @@ class AlertsDataUpdateCoordinator(DataUpdateCoordinator):
                 try:
                     tmp_dict: dict[str, Any] = {}
 
+                    # Ignore expired events
+                    if "Past" in alert["properties"]["urgency"]:
+                        continue
+
                     # Generate stable Alert ID
                     alert_id = await self.generate_id(alert["id"])
 
